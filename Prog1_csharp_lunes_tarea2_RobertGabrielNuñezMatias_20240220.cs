@@ -44,61 +44,13 @@
                 break;
             case 4: // Modify Contact
                 {
-                    Console.WriteLine("Digita el id de la cuenta que quieres modificar: ");
-                    int id = Convert.ToInt32(Console.ReadLine());
-
-
-                    Console.WriteLine("Escribe el nuevo nombre: ");
-                    string name = Console.ReadLine();
-                    names.Remove(id);
-                    names.Add(id, name);
-
-                    Console.WriteLine("Escribe el nuevo apellido: ");
-                    string lastname = Console.ReadLine();
-                    lastnames.Remove(id);
-                    lastnames.Add(id, lastname);
-
-                    Console.WriteLine("Escribe la nueva direccion: ");
-                    string address = Console.ReadLine();
-                    addresses.Remove(id);
-                    addresses.Add(id, address);
-
-                    Console.WriteLine("Escribe el nuevo telefono: ");
-                    string phone = Console.ReadLine();
-                    telephones.Remove(id);
-                    telephones.Add(id, phone);
-
-                    Console.WriteLine("Escribe el nuevo email: ");
-                    string email = Console.ReadLine();
-                    emails.Remove(id);
-                    emails.Add(id, email);
-
-                    Console.WriteLine("Escribe la nueva edad de la persona en numeros: ");
-                    int age = Convert.ToInt32(Console.ReadLine());
-                    ages.Remove(id);
-                    ages.Add(id, age);
-
-                    Console.WriteLine("Especifique si es mejor amigo: 1. Si, 2. No");
-                    bool isBestFriends = Convert.ToInt32(Console.ReadLine()) == 1;
-
-                    bestFriends.Remove(id);
-                    bestFriends.Add(id, isBestFriends);
+                    ModifyContact(names, lastnames, addresses, telephones, emails, ages, bestFriends);
                 }
 
                 break;
             case 5: // Delete
                 {
-                    Console.WriteLine("Digita el id de la cuenta que quieres borrar: ");
-                    int id = Convert.ToInt32(Console.ReadLine());
-
-                    ids.Remove(id);
-                    names.Remove(id);
-                    lastnames.Remove(id);
-                    addresses.Remove(id);
-                    telephones.Remove(id);
-                    emails.Remove(id);
-                    ages.Remove(id);
-                    bestFriends.Remove(id);
+                    DeleteContact(ids, names, lastnames, addresses, telephones, emails, ages, bestFriends);
 
                 }
                 break;
@@ -113,7 +65,7 @@
         }
     }
 
-
+    // Adding a new contact method
     static void AddContact(List<int> ids, Dictionary<int, string> names, Dictionary<int, string> lastnames, Dictionary<int, string> addresses, Dictionary<int, string> telephones, Dictionary<int, string> emails, Dictionary<int, int> ages, Dictionary<int, bool> bestFriends)
     {
         Console.WriteLine("Digite el nombre de la persona");
@@ -142,6 +94,7 @@
         bestFriends.Add(id, isBestFriend);
     }
 
+    // Listing all contacts method
     static void ListContacts(List<int> ids, Dictionary<int, string> names, Dictionary<int, string> lastnames, Dictionary<int, string> addresses, Dictionary<int, string> telephones, Dictionary<int, string> emails, Dictionary<int, int> ages, Dictionary<int, bool> bestFriends)
     {
         Console.WriteLine($"Nombre          Apellido            Dirección           Telefono            Email           Edad            Es Mejor Amigo?");
@@ -155,6 +108,7 @@
         }
     }
 
+    // Searching a contact method
     static void SearchContacts(Dictionary<int, string> names, Dictionary<int, string> lastnames, Dictionary<int, string> addresses, Dictionary<int, string> telephones, Dictionary<int, string> emails, Dictionary<int, int> ages, Dictionary<int, bool> bestFriends)
     {
         Console.WriteLine("Digita el id de la cuenta que buscas: ");
@@ -167,9 +121,69 @@
         Console.WriteLine($"____________________________________________________________________________________________________________________________");
         Console.WriteLine($"{names[id]}         {lastnames[id]}         {addresses[id]}         {telephones[id]}            {emails[id]}            {ages[id]}          {isBestFriendStr}");
     }
+
+    // Modifying a contact method
+    static void ModifyContact(Dictionary<int, string> names, Dictionary<int, string> lastnames, Dictionary<int, string> addresses, Dictionary<int, string> telephones, Dictionary<int, string> emails, Dictionary<int, int> ages, Dictionary<int, bool> bestFriends)
+    {
+        Console.WriteLine("Digita el id de la cuenta que quieres modificar: ");
+        int id = Convert.ToInt32(Console.ReadLine());
+
+
+        Console.WriteLine("Escribe el nuevo nombre: ");
+        string name = Console.ReadLine();
+        names.Remove(id);
+        names.Add(id, name);
+
+        Console.WriteLine("Escribe el nuevo apellido: ");
+        string lastname = Console.ReadLine();
+        lastnames.Remove(id);
+        lastnames.Add(id, lastname);
+
+        Console.WriteLine("Escribe la nueva direccion: ");
+        string address = Console.ReadLine();
+        addresses.Remove(id);
+        addresses.Add(id, address);
+
+        Console.WriteLine("Escribe el nuevo telefono: ");
+        string phone = Console.ReadLine();
+        telephones.Remove(id);
+        telephones.Add(id, phone);
+
+        Console.WriteLine("Escribe el nuevo email: ");
+        string email = Console.ReadLine();
+        emails.Remove(id);
+        emails.Add(id, email);
+
+        Console.WriteLine("Escribe la nueva edad de la persona en numeros: ");
+        int age = Convert.ToInt32(Console.ReadLine());
+        ages.Remove(id);
+        ages.Add(id, age);
+
+        Console.WriteLine("Especifique si es mejor amigo: 1. Si, 2. No");
+        bool isBestFriends = Convert.ToInt32(Console.ReadLine()) == 1;
+
+        bestFriends.Remove(id);
+        bestFriends.Add(id, isBestFriends);
+    }
+
+    static void DeleteContact(List<int> ids, Dictionary<int, string> names, Dictionary<int, string> lastnames, Dictionary<int, string> addresses, Dictionary<int, string> telephones, Dictionary<int, string> emails, Dictionary<int, int> ages, Dictionary<int, bool> bestFriends)
+    {
+        Console.WriteLine("Digita el id de la cuenta que quieres borrar: ");
+        int id = Convert.ToInt32(Console.ReadLine());
+
+        ids.Remove(id);
+        names.Remove(id);
+        lastnames.Remove(id);
+        addresses.Remove(id);
+        telephones.Remove(id);
+        emails.Remove(id);
+        ages.Remove(id);
+        bestFriends.Remove(id);
+    }
 }
 catch (Exception error)
 {
-    Console.WriteLine("There was an exception: ", error.Message);
+    Console.WriteLine("There was an exception");
 
 }
+
